@@ -21,10 +21,10 @@ jobs:
       - name: Ping every 10 minutes
         run: |
           URL="https://bagrut-math-api-img.onrender.com/health"
-          for i in $(seq 1 34); do
+          for i in $(seq 1 42); do
             code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 90 "$URL" || echo 000)
             echo "$(date -u +%H:%M:%S) ping #$i -> HTTP $code"
-            sleep 600
+            sleep 480
           done
       - name: Re-dispatch self (continuous loop)
         if: always()
